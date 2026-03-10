@@ -1,6 +1,15 @@
 import { defineConfig } from 'vite';
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 export default defineConfig({
+  plugins: [
+    ViteImageOptimizer({
+      png: { quality: 75, compressionLevel: 8 },
+      jpeg: { quality: 75 },
+      jpg: { quality: 75 },
+      webp: { quality: 75, lossless: false },
+    }),
+  ],
   build: {
     // Split large libraries into separate chunks for better caching
     rollupOptions: {
